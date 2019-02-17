@@ -1,38 +1,26 @@
 version: 2
 jobs:
-  #build:
   shellcheck:
     docker:
-      - image: debian:stretch
-
+      - image: koalaman/shellcheck-alpine:stable
     steps:
       - checkout
-
       - run:
-          name: Greeting
-          command: echo Hello, world.
-
-      - run:
-          name: Print the Current Time
-          command: date
-
-      - run:
-          name: install virtualenv
+          name: Check Scripts
           command: |
-                  sudo apt-get install python-pip
-                  pip install --upgrade virtualenv
+            find . -type f -name '*.sh' | wc -l
+            find . -type f -name '*.sh' | xargs shellcheck --external-sources
+  build-job:
+    ...
 
-      - run:
-          name: setup Virtualenv
-          command: |
-                  echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
-                  echo 'export IMAGE_NAME=python-circleci-docker' >> $BASH_ENV 
-                  virtualenv helloworld
-                  . helloworld/bin/activate
-                  pip install --no-cache-dir -r requirements.txt
-
-      - run:
-          name: Run bash command
-          command: |
-                  . helloworld/bin/activate
-                  python script.py
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - shellcheck
+      - build-job:
+          requires:
+            - shellcheck
+          filters:
+            branches:
+              only: master
