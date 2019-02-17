@@ -16,6 +16,10 @@ jobs:
           command: date
 
       - run:
+          name: install virtualenv
+          command: pip install --upgrade virtualenv
+
+      - run:
           name: setup Virtualenv
           command: |
                   echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
