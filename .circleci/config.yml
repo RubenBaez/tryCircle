@@ -16,5 +16,5 @@ jobs:
           command: date
 
       - run:
-          name: New file
-          command: touch script.py
+          name: Run bash command
+          command: sh exec.sh
