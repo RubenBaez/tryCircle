@@ -5,10 +5,10 @@ workflows:
       - build
       - test1:
           requires:
-            - build
+           #- build
       - test2:
           requires:
-            - test1
+           #- test1
       - deploy:
           requires:
-            - test2
+           #- test2
