@@ -18,7 +18,7 @@ jobs:
       - run:
           name: install virtualenv
           command: |
-                  sudo apt-get install python-dev
+                  apt-get install python-dev
                   pip install --upgrade virtualenv
 
       - run:
