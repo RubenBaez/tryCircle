@@ -1,6 +1,7 @@
 version: 2
 jobs:
-  build:
+  #build:
+  shellcheck:
     docker:
       - image: debian:stretch
 
@@ -14,8 +15,6 @@ jobs:
       - run:
           name: Print the Current Time
           command: date
-
-      - run: sudo apt update
 
       - run:
           name: install virtualenv
