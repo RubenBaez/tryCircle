@@ -18,7 +18,7 @@ jobs:
       - run:
           name: install virtualenv
           command: |
-                  'apt-get install python-pip'
+                  'sudo apt-get install python-pip'
                   'pip install --upgrade virtualenv'
 
       - run:
