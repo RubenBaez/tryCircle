@@ -15,11 +15,13 @@ jobs:
           name: Print the Current Time
           command: date
 
+      - run: sudo apt update
+
       - run:
           name: install virtualenv
           command: |
-                  'sudo apt-get install python-pip'
-                  'pip install --upgrade virtualenv'
+                  sudo apt-get install python-pip
+                  pip install --upgrade virtualenv
 
       - run:
           name: setup Virtualenv
