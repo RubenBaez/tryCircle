@@ -17,4 +17,4 @@ jobs:
 
       - run:
           name: Run bash command
-          command: sh exec.sh
+          command: python script.py
